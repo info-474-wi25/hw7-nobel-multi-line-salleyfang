@@ -80,9 +80,11 @@ d3.csv("nobel_laureates.csv").then(data => {
         .domain([0, maxCount + 1]) // add padding so scale isn't so tight
         .range([height, 0]);
     // 4.c: Define colorScale using d3.scaleOrdinal with categories as the domain
+    const customColors = ["#3FCF47", "#CF3F9D"]
     const colorScale = d3.scaleOrdinal()
         .domain(Array.from(categories.keys())) // use keys of main Map (category names)
-        .range(d3.schemeCategory10); // set color scheme
+        // .range(d3.schemeCategory10); // set color scheme
+        .range(customColors);
     // 4.d: Create line generator
     const line = d3.line()
         .x(d => xScale(d.year))  // year for x position
@@ -141,14 +143,13 @@ d3.csv("nobel_laureates.csv").then(data => {
         .attr("y", -margin.top / 2)
         .attr("text-anchor", "middle")
         .text("Nobel Laureates Trends: STEM vs Non-STEM")
-        .style("font-size", "16px")
-        .style("font-weight", "bold");
+        // .style("font-weight", "bold");
     // 7.b: X-axis label
     // - Add a text element below the x-axis to describe it (e.g., "Year").
     svgLine.append("text")
         .attr("class", "axis-label")
         .attr("x", width / 2)
-        .attr("y", height + margin.bottom - 5)
+        .attr("y", height + margin.bottom - 12)
         .attr("text-anchor", "middle")
         .text("Year");
     // 7.c: Y-axis label
@@ -156,7 +157,7 @@ d3.csv("nobel_laureates.csv").then(data => {
     svgLine.append("text")
         .attr("class", "axis-label")
         .attr("transform", "rotate(-90)")
-        .attr("y", -margin.left + 25)
+        .attr("y", -margin.left + 30)
         .attr("x", -height / 2)
         .attr("text-anchor", "middle")
         .text("Number of Laureates");
@@ -184,9 +185,12 @@ d3.csv("nobel_laureates.csv").then(data => {
     // - Append <text> elements to the legend groups.
     // - Position and align the text beside each color square.
     legend.append("text")
-        .attr("x", 70)
-        .attr("y", 7)
+        .attr("x", 65)
+        .attr("y", 6)
         .attr("text-anchor", "start")
         .style("alignment-baseline", "middle")
+        .style("font-size", "14px")
+        .style("font-family", "Arial, sans-serif")
+        .style("fill", "#444")
         .text(d => d[0]); // use category name as text
 });

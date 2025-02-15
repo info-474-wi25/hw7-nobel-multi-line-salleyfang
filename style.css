@@ -1,7 +1,7 @@
 /* Styles for the axis labels (x and y labels) */
 .title {
     font-family: 'Arial', sans-serif;
-    font-size: 16px;
+    font-size: 18px; /* made font size larger for title */
     font-weight: bold;
     fill: #333; /* Dark color for the title */
     text-anchor: middle;
@@ -9,7 +9,7 @@
 
 .axis-label {
     font-family: 'Arial', sans-serif; /* Same font as the title */
-    font-size: 12px; /* Smaller font size for axis labels */
+    font-size: 14px; /* Smaller font size for axis labels */
     fill: #666; /* A lighter gray for axis labels */
     text-anchor: middle; /* Center the text */
 }
